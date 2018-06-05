@@ -5,6 +5,7 @@ import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -46,5 +47,16 @@ public class First {
 
 
 
+
+
+    }
+
+    @Test
+    public void testWhitebox() throws Exception {
+        Second second = new Second();
+
+        String actual = Whitebox.invokeMethod(second, "privatMethod");
+
+        assertEquals(actual, "person");
     }
 }
